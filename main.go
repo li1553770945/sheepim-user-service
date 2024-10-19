@@ -16,16 +16,36 @@
 package main
 
 import (
-	"log"
-
-	api "sheepim-user-service/kitex_gen/api/hello"
+	"context"
+	"github.com/cloudwego/kitex/pkg/klog"
+	"github.com/cloudwego/kitex/pkg/rpcinfo"
+	"github.com/cloudwego/kitex/server"
+	"github.com/kitex-contrib/obs-opentelemetry/provider"
+	"github.com/kitex-contrib/obs-opentelemetry/tracing"
+	"sheepim-user-service/kitex_gen/api/hello"
 )
 
 func main() {
-	svr := api.NewServer(new(HelloImpl))
+	serviceName := "sheepim-user-service"
+	p := provider.NewOpenTelemetryProvider(
+		provider.WithServiceName(serviceName),
+		provider.WithExportEndpoint("localhost:4317"),
+		provider.WithInsecure(),
+	)
+	defer func(p provider.OtelProvider, ctx context.Context) {
+		err := p.Shutdown(ctx)
+		if err != nil {
+			klog.Fatalf("server stopped with error:", err)
+		}
+	}(p, context.Background())
 
-	err := svr.Run()
-	if err != nil {
-		log.Println(err.Error())
+	svr := hello.NewServer(
+		new(HelloImpl),
+		server.WithSuite(tracing.NewServerSuite()),
+		// Please keep the same as provider.WithServiceName
+		server.WithServerBasicInfo(&rpcinfo.EndpointBasicInfo{ServiceName: serviceName}),
+	)
+	if err := svr.Run(); err != nil {
+		klog.Fatalf("server stopped with error:", err)
 	}
 }

@@ -17,6 +17,9 @@ package main
 
 import (
 	"context"
+	"github.com/cloudwego/kitex/pkg/rpcinfo"
+	"github.com/kitex-contrib/obs-opentelemetry/provider"
+	"github.com/kitex-contrib/obs-opentelemetry/tracing"
 	"log"
 	"time"
 
@@ -26,7 +29,22 @@ import (
 )
 
 func main() {
-	client, err := hello.NewClient("hello", client.WithHostPorts("0.0.0.0:8888"))
+	serviceName := "sheepim-client-service"
+
+	p := provider.NewOpenTelemetryProvider(
+		provider.WithServiceName(serviceName),
+		provider.WithExportEndpoint("localhost:4317"),
+		provider.WithInsecure(),
+	)
+	defer p.Shutdown(context.Background())
+
+	client, err := hello.NewClient("hello",
+		client.WithHostPorts("0.0.0.0:8888"),
+		client.WithSuite(tracing.NewClientSuite()),
+		// Please keep the same as provider.WithServiceName
+		client.WithClientBasicInfo(&rpcinfo.EndpointBasicInfo{ServiceName: serviceName}),
+	)
+
 	if err != nil {
 		log.Fatal(err)
 	}
