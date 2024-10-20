@@ -13,7 +13,11 @@ type ServerConfig struct {
 	ListenAddress string `yaml:"listen-address"`
 }
 
-type TracingConfig struct {
+type OpenTelemetryConfig struct {
+	Endpoint string `yaml:"endpoint"`
+}
+
+type EtcdConfig struct {
 	Endpoint string `yaml:"endpoint"`
 }
 
@@ -26,10 +30,11 @@ type DatabaseConfig struct {
 }
 
 type Config struct {
-	Env            string
-	ServerConfig   ServerConfig   `yaml:"server"`
-	TracingConfig  TracingConfig  `yaml:"tracing"`
-	DatabaseConfig DatabaseConfig `yaml:"database"`
+	Env                 string
+	ServerConfig        ServerConfig        `yaml:"server"`
+	OpenTelemetryConfig OpenTelemetryConfig `yaml:"open-telemetry"`
+	DatabaseConfig      DatabaseConfig      `yaml:"database"`
+	EtcdConfig          EtcdConfig          `yaml:"etcd"`
 }
 
 func InitConfig(env string) *Config {
