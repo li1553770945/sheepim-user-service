@@ -1,7 +1,7 @@
 package assembler
 
 import (
-	"sheepim-user-service/biz/internal/constant"
+	"sheepim-user-service/biz/constant"
 	"sheepim-user-service/biz/internal/domain"
 	"sheepim-user-service/kitex_gen/base"
 	"sheepim-user-service/kitex_gen/user"

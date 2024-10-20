@@ -3,8 +3,8 @@ package user
 import (
 	"context"
 	"golang.org/x/crypto/bcrypt"
+	"sheepim-user-service/biz/constant"
 	"sheepim-user-service/biz/internal/assembler"
-	"sheepim-user-service/biz/internal/constant"
 	"sheepim-user-service/kitex_gen/base"
 	"sheepim-user-service/kitex_gen/user"
 )

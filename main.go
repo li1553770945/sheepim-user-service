@@ -22,6 +22,7 @@ import (
 	"github.com/cloudwego/kitex/server"
 	"github.com/kitex-contrib/obs-opentelemetry/provider"
 	"github.com/kitex-contrib/obs-opentelemetry/tracing"
+	"os"
 	"sheepim-user-service/biz/infra/container"
 	"sheepim-user-service/kitex_gen/user/userservice"
 )
@@ -29,6 +30,11 @@ import (
 var App *container.Container
 
 func main() {
+	env := os.Getenv("ENV")
+	if env == "" {
+		env = "development"
+	}
+	App = container.GetContainer(env)
 	serviceName := App.Config.ServerConfig.ServiceName
 	p := provider.NewOpenTelemetryProvider(
 		provider.WithServiceName(serviceName),
@@ -38,7 +44,7 @@ func main() {
 	defer func(p provider.OtelProvider, ctx context.Context) {
 		err := p.Shutdown(ctx)
 		if err != nil {
-			klog.Fatalf("server stopped with error:", err)
+			klog.Fatalf("server stopped with error:%s", err)
 		}
 	}(p, context.Background())
 

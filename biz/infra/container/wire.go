@@ -11,7 +11,7 @@ import (
 	"sheepim-user-service/biz/internal/service"
 )
 
-func GetContainer(path string) *Container {
+func GetContainer(env string) *Container {
 	panic(wire.Build(
 
 		//infra
