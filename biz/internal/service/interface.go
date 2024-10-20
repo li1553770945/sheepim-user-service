@@ -2,8 +2,8 @@ package user
 
 import (
 	"context"
-	"github.com/cloudwego/hertz/pkg/app"
 	"sheepim-user-service/biz/internal/repo"
+	"sheepim-user-service/kitex_gen/user"
 )
 
 type UserService struct {
@@ -11,11 +11,9 @@ type UserService struct {
 }
 
 type IUserService interface {
-	Login(ctx context.Context, c *app.RequestContext)
-	Logout(ctx context.Context, c *app.RequestContext)
-	GetUserInfo(ctx context.Context, c *app.RequestContext)
-	GenerateActivateCode(ctx context.Context, c *app.RequestContext)
-	Register(ctx context.Context, c *app.RequestContext)
+	CheckUsernameAndPasswd(ctx context.Context, req *user.CheckUsernameAndPasswdReq) (*user.CheckUsernameAndPasswdResp, error)
+	GetUserInfo(ctx context.Context, req *user.UserInfoReq) (resp *user.UserInfoResp, err error)
+	AddUser(ctx context.Context, req *user.AddUserReq) (resp *user.AddUserResp, err error)
 }
 
 func NewUserService(repo repo.IRepository) IUserService {

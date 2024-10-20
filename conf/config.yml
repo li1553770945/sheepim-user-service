@@ -1,0 +1,13 @@
+server:
+  listen-address: 0.0.0.0:8888
+  service-name: user-rpc-service
+
+tracing:
+  endpoint: localhost:4317
+
+database:
+  username: liyaning
+  password: Li5060520..
+  database: pmc
+  address: sh-cynosdbmysql-grp-e15zz2a8.sql.tencentcdb.com
+  port: 26361

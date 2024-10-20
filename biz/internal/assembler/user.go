@@ -1,14 +1,24 @@
 package assembler
 
 import (
-	"personal-page-be/biz/internal/domain"
-	"personal-page-be/biz/internal/dto"
+	"sheepim-user-service/biz/internal/constant"
+	"sheepim-user-service/biz/internal/domain"
+	"sheepim-user-service/kitex_gen/base"
+	"sheepim-user-service/kitex_gen/user"
 )
 
-func UserEntityToDTO(user *domain.UserEntity) *dto.UserDTO {
-	return &dto.UserDTO{
-		Username: user.Username,
-		Nickname: user.Nickname,
-		Role:     user.Role,
+func AssembleSuccessBaseResp() *base.BaseResp {
+	return &base.BaseResp{
+		Code: constant.Success,
+	}
+}
+
+func UserInfoEntityToDTO(userEntity *domain.UserEntity) *user.UserInfoResp {
+	return &user.UserInfoResp{
+		BaseResp: AssembleSuccessBaseResp(),
+		UserId:   &userEntity.ID,
+		Username: &userEntity.Username,
+		Nickname: &userEntity.Nickname,
+		Role:     &userEntity.Role,
 	}
 }

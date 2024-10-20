@@ -5,22 +5,27 @@ import (
 	"os"
 )
 
+type ServerConfig struct {
+	ServiceName   string `yaml:"service-name"`
+	ListenAddress string `yaml:"listen-address"`
+}
+
+type TracingConfig struct {
+	Endpoint string `yaml:"endpoint"`
+}
+
 type DatabaseConfig struct {
 	Username string `yaml:"username"`
 	Password string `yaml:"password"`
 	Database string `yaml:"database"`
 	Address  string `yaml:"address"`
-	Port     int    `yaml:"port"`
-}
-
-type HttpConfig struct {
-	Address   string `yaml:"address"`
-	SecretKey string `yaml:"secret_key"`
+	Port     string `yaml:"port"`
 }
 
 type Config struct {
+	ServerConfig   ServerConfig   `yaml:"server"`
+	TracingConfig  TracingConfig  `yaml:"tracing"`
 	DatabaseConfig DatabaseConfig `yaml:"database"`
-	HttpConfig     HttpConfig     `yaml:"http"`
 }
 
 func InitConfig(path string) *Config {

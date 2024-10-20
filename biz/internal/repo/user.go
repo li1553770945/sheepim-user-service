@@ -1,12 +1,21 @@
 package repo
 
 import (
-	"personal-page-be/biz/internal/domain"
+	"sheepim-user-service/biz/internal/domain"
 )
 
-func (Repo *Repository) FindUser(username string) (*domain.UserEntity, error) {
+func (Repo *Repository) FindUserByUsername(username string) (*domain.UserEntity, error) {
 	var user domain.UserEntity
 	err := Repo.DB.Where("username = ?", username).Limit(1).Find(&user).Error
+	if err != nil {
+		return nil, err
+	}
+	return &user, nil
+}
+
+func (Repo *Repository) FindUserById(userId int64) (*domain.UserEntity, error) {
+	var user domain.UserEntity
+	err := Repo.DB.Where("id = ?", userId).Limit(1).Find(&user).Error
 	if err != nil {
 		return nil, err
 	}

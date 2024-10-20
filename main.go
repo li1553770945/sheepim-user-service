@@ -22,11 +22,14 @@ import (
 	"github.com/cloudwego/kitex/server"
 	"github.com/kitex-contrib/obs-opentelemetry/provider"
 	"github.com/kitex-contrib/obs-opentelemetry/tracing"
-	"sheepim-user-service/kitex_gen/api/hello"
+	"sheepim-user-service/biz/infra/container"
+	"sheepim-user-service/kitex_gen/user/userservice"
 )
 
+var App *container.Container
+
 func main() {
-	serviceName := "sheepim-user-service"
+	serviceName := App.Config.ServerConfig.ServiceName
 	p := provider.NewOpenTelemetryProvider(
 		provider.WithServiceName(serviceName),
 		provider.WithExportEndpoint("localhost:4317"),
@@ -39,10 +42,9 @@ func main() {
 		}
 	}(p, context.Background())
 
-	svr := hello.NewServer(
-		new(HelloImpl),
+	svr := userservice.NewServer(
+		new(UserServiceImpl),
 		server.WithSuite(tracing.NewServerSuite()),
-		// Please keep the same as provider.WithServiceName
 		server.WithServerBasicInfo(&rpcinfo.EndpointBasicInfo{ServiceName: serviceName}),
 	)
 	if err := svr.Run(); err != nil {

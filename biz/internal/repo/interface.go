@@ -6,7 +6,8 @@ import (
 )
 
 type IRepository interface {
-	FindUser(username string) (*domain.UserEntity, error)
+	FindUserByUsername(username string) (*domain.UserEntity, error)
+	FindUserById(userId int64) (*domain.UserEntity, error)
 	SaveUser(user *domain.UserEntity) error
 }
 
