@@ -5,13 +5,10 @@ package container
 
 import (
 	"github.com/google/wire"
-	"personal-page-be/biz/infra/config"
-	"personal-page-be/biz/internal/repo"
-	"personal-page-be/biz/internal/service/chat"
-	"personal-page-be/biz/internal/service/file"
-	"personal-page-be/biz/internal/service/global_service"
-	"personal-page-be/biz/internal/service/message"
-	"personal-page-be/biz/internal/service/user"
+	"sheepim-user-service/biz/infra/config"
+	"sheepim-user-service/biz/infra/database"
+	"sheepim-user-service/biz/internal/repo"
+	"sheepim-user-service/biz/internal/service"
 )
 
 func GetContainer(path string) *Container {
@@ -22,13 +19,10 @@ func GetContainer(path string) *Container {
 
 		//repo
 		repo.NewRepository,
+		database.NewDatabase,
 
 		//service
 		user.NewUserService,
-		file.NewFileService,
-		global_service.NewGlobalService,
-		message.NewMessageService,
-		chat.NewChatService,
 
 		NewContainer,
 	))
