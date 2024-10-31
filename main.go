@@ -30,14 +30,13 @@ import (
 	"sheepim-user-service/kitex_gen/user/userservice"
 )
 
-var App *container.Container
-
 func main() {
 	env := os.Getenv("ENV")
 	if env == "" {
 		env = "development"
 	}
-	App = container.GetContainer(env)
+	container.InitGlobalContainer(env)
+	App := container.GetGlobalContainer()
 
 	serviceName := App.Config.ServerConfig.ServiceName
 	p := provider.NewOpenTelemetryProvider(

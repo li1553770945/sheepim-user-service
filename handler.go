@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"sheepim-user-service/biz/infra/container"
 	"sheepim-user-service/kitex_gen/user"
 )
 
@@ -10,6 +11,7 @@ type UserServiceImpl struct{}
 
 // CheckUsernameAndPasswd implements the UserServiceImpl interface.
 func (s *UserServiceImpl) CheckUsernameAndPasswd(ctx context.Context, req *user.CheckUsernameAndPasswdReq) (resp *user.CheckUsernameAndPasswdResp, err error) {
+	App := container.GetGlobalContainer()
 	resp, err = App.UserService.CheckUsernameAndPasswd(ctx, req)
 	// TODO: Your code here...
 	return
@@ -17,6 +19,7 @@ func (s *UserServiceImpl) CheckUsernameAndPasswd(ctx context.Context, req *user.
 
 // AddUser implements the UserServiceImpl interface.
 func (s *UserServiceImpl) AddUser(ctx context.Context, req *user.AddUserReq) (resp *user.AddUserResp, err error) {
+	App := container.GetGlobalContainer()
 	resp, err = App.UserService.AddUser(ctx, req)
 	// TODO: Your code here...
 	return
@@ -25,6 +28,7 @@ func (s *UserServiceImpl) AddUser(ctx context.Context, req *user.AddUserReq) (re
 // GetUserInfo implements the UserServiceImpl interface.
 func (s *UserServiceImpl) GetUserInfo(ctx context.Context, req *user.UserInfoReq) (resp *user.UserInfoResp, err error) {
 	// TODO: Your code here...
+	App := container.GetGlobalContainer()
 	resp, err = App.UserService.GetUserInfo(ctx, req)
 	return
 }
