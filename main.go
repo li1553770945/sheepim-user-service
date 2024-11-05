@@ -56,7 +56,7 @@ func main() {
 		panic("设置监听地址出错")
 	}
 
-	r, err := etcd.NewEtcdRegistry([]string{App.Config.EtcdConfig.Endpoint}) // r should not be reused.
+	r, err := etcd.NewEtcdRegistry(App.Config.EtcdConfig.Endpoint) // r should not be reused.
 	if err != nil {
 		log.Fatal(err)
 	}

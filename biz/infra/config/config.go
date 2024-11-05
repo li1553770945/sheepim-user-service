@@ -18,7 +18,7 @@ type OpenTelemetryConfig struct {
 }
 
 type EtcdConfig struct {
-	Endpoint string `yaml:"endpoint"`
+	Endpoint []string `yaml:"endpoint"`
 }
 
 type DatabaseConfig struct {
