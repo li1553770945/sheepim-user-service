@@ -2,11 +2,11 @@ package user
 
 import (
 	"context"
+	"github.com/li1553770945/sheepim-user-service/biz/constant"
+	"github.com/li1553770945/sheepim-user-service/biz/internal/assembler"
+	"github.com/li1553770945/sheepim-user-service/kitex_gen/base"
+	"github.com/li1553770945/sheepim-user-service/kitex_gen/user"
 	"golang.org/x/crypto/bcrypt"
-	"sheepim-user-service/biz/constant"
-	"sheepim-user-service/biz/internal/assembler"
-	"sheepim-user-service/kitex_gen/base"
-	"sheepim-user-service/kitex_gen/user"
 )
 
 func (s *UserService) CheckUsernameAndPasswd(ctx context.Context, req *user.CheckUsernameAndPasswdReq) (resp *user.CheckUsernameAndPasswdResp, err error) {

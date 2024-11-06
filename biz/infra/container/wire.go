@@ -5,10 +5,10 @@ package container
 
 import (
 	"github.com/google/wire"
-	"sheepim-user-service/biz/infra/config"
-	"sheepim-user-service/biz/infra/database"
-	"sheepim-user-service/biz/internal/repo"
-	"sheepim-user-service/biz/internal/service"
+	"github.com/li1553770945/sheepim-user-service/biz/infra/config"
+	"github.com/li1553770945/sheepim-user-service/biz/infra/database"
+	"github.com/li1553770945/sheepim-user-service/biz/internal/repo"
+	"github.com/li1553770945/sheepim-user-service/biz/internal/service"
 )
 
 func GetContainer(env string) *Container {

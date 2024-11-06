@@ -1,10 +1,10 @@
 package assembler
 
 import (
-	"sheepim-user-service/biz/constant"
-	"sheepim-user-service/biz/internal/domain"
-	"sheepim-user-service/kitex_gen/base"
-	"sheepim-user-service/kitex_gen/user"
+	"github.com/li1553770945/sheepim-user-service/biz/constant"
+	"github.com/li1553770945/sheepim-user-service/biz/internal/domain"
+	"github.com/li1553770945/sheepim-user-service/kitex_gen/base"
+	"github.com/li1553770945/sheepim-user-service/kitex_gen/user"
 )
 
 func AssembleSuccessBaseResp() *base.BaseResp {

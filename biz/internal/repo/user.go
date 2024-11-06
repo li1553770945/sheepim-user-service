@@ -1,7 +1,7 @@
 package repo
 
 import (
-	"sheepim-user-service/biz/internal/domain"
+	"github.com/li1553770945/sheepim-user-service/biz/internal/domain"
 )
 
 func (Repo *Repository) FindUserByUsername(username string) (*domain.UserEntity, error) {

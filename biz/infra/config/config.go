@@ -2,10 +2,10 @@ package config
 
 import (
 	"fmt"
+	"github.com/li1553770945/sheepim-user-service/biz/constant"
 	"gopkg.in/yaml.v3"
 	"os"
 	"path/filepath"
-	"sheepim-user-service/biz/constant"
 )
 
 type ServerConfig struct {

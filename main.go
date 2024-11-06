@@ -23,11 +23,11 @@ import (
 	"github.com/kitex-contrib/obs-opentelemetry/provider"
 	"github.com/kitex-contrib/obs-opentelemetry/tracing"
 	etcd "github.com/kitex-contrib/registry-etcd"
+	"github.com/li1553770945/sheepim-user-service/biz/infra/container"
+	"github.com/li1553770945/sheepim-user-service/kitex_gen/user/userservice"
 	"log"
 	"net"
 	"os"
-	"sheepim-user-service/biz/infra/container"
-	"sheepim-user-service/kitex_gen/user/userservice"
 )
 
 func main() {

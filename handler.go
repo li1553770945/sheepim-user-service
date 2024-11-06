@@ -2,8 +2,8 @@ package main
 
 import (
 	"context"
-	"sheepim-user-service/biz/infra/container"
-	"sheepim-user-service/kitex_gen/user"
+	"github.com/li1553770945/sheepim-user-service/biz/infra/container"
+	"github.com/li1553770945/sheepim-user-service/kitex_gen/user"
 )
 
 // UserServiceImpl implements the last service interface defined in the IDL.

@@ -2,8 +2,8 @@ package user
 
 import (
 	"context"
-	"sheepim-user-service/biz/internal/repo"
-	"sheepim-user-service/kitex_gen/user"
+	"github.com/li1553770945/sheepim-user-service/biz/internal/repo"
+	"github.com/li1553770945/sheepim-user-service/kitex_gen/user"
 )
 
 type UserService struct {

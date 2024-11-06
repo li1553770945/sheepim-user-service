@@ -1,7 +1,7 @@
 package domain
 
 import (
-	"sheepim-user-service/biz/internal/do"
+	"github.com/li1553770945/sheepim-user-service/biz/internal/do"
 )
 
 type UserEntity struct {

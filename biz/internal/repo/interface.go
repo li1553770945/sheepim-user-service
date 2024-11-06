@@ -1,8 +1,8 @@
 package repo
 
 import (
+	"github.com/li1553770945/sheepim-user-service/biz/internal/domain"
 	"gorm.io/gorm"
-	"sheepim-user-service/biz/internal/domain"
 )
 
 type IRepository interface {

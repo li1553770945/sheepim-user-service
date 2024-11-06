@@ -1,8 +1,8 @@
 package container
 
 import (
-	"sheepim-user-service/biz/infra/config"
-	"sheepim-user-service/biz/internal/service"
+	"github.com/li1553770945/sheepim-user-service/biz/infra/config"
+	"github.com/li1553770945/sheepim-user-service/biz/internal/service"
 	"sync"
 )
 
