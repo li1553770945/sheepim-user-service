@@ -21,12 +21,11 @@ func GetGlobalContainer() *Container {
 	return APP
 }
 
-func InitGlobalContainer(env string) {
+func InitGlobalContainer(config *config.Config) {
 	once.Do(func() {
-		APP = GetContainer(env)
+		APP = GetContainer(config)
 	})
 }
-
 func NewContainer(config *config.Config, userService user.IUserService,
 ) *Container {
 	return &Container{

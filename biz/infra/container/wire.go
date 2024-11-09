@@ -11,11 +11,10 @@ import (
 	"github.com/li1553770945/sheepim-user-service/biz/internal/service"
 )
 
-func GetContainer(env string) *Container {
+func GetContainer(cfg *config.Config) *Container {
 	panic(wire.Build(
 
 		//infra
-		config.InitConfig,
 
 		//repo
 		repo.NewRepository,
