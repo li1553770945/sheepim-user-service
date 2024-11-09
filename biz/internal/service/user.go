@@ -3,7 +3,7 @@ package user
 import (
 	"context"
 	"github.com/li1553770945/sheepim-user-service/biz/constant"
-	"github.com/li1553770945/sheepim-user-service/biz/internal/assembler"
+	"github.com/li1553770945/sheepim-user-service/biz/internal/converter"
 	"github.com/li1553770945/sheepim-user-service/kitex_gen/base"
 	"github.com/li1553770945/sheepim-user-service/kitex_gen/user"
 	"golang.org/x/crypto/bcrypt"
@@ -65,7 +65,7 @@ func (s *UserService) GetUserInfo(ctx context.Context, req *user.UserInfoReq) (r
 		}
 		return
 	}
-	resp = assembler.UserInfoEntityToDTO(findUser)
+	resp = converter.UserInfoEntityToDTO(findUser)
 	return
 }
 

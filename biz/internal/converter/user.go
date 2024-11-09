@@ -1,4 +1,4 @@
-package assembler
+package converter
 
 import (
 	"github.com/li1553770945/sheepim-user-service/biz/constant"

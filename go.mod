@@ -1,6 +1,6 @@
 module github.com/li1553770945/sheepim-user-service
 
-go 1.22.0
+go 1.23.3
 
 require (
 	github.com/apache/thrift v0.21.0
