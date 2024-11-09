@@ -2,6 +2,7 @@ package user
 
 import (
 	"context"
+	"github.com/cloudwego/kitex/pkg/klog"
 	"github.com/li1553770945/sheepim-user-service/biz/constant"
 	"github.com/li1553770945/sheepim-user-service/biz/internal/converter"
 	"github.com/li1553770945/sheepim-user-service/kitex_gen/base"
@@ -10,7 +11,7 @@ import (
 )
 
 func (s *UserService) CheckUsernameAndPasswd(ctx context.Context, req *user.CheckUsernameAndPasswdReq) (resp *user.CheckUsernameAndPasswdResp, err error) {
-
+	klog.CtxInfof(ctx, "检查 %v 用户的用户名密码", req.Username)
 	findUser, err := s.Repo.FindUserByUsername(req.Username)
 	if err != nil {
 		resp = &user.CheckUsernameAndPasswdResp{
